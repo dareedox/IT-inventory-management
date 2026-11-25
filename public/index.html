@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Inventory Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div><h1>IT Inventory Management</h1></div>
+            <span class="header-label">Administrator</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>Add New Product</h2>
+            <p class="section-description">Register a product in the inventory.</p>
+
+            <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+
+            <form id="productForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sku">SKU <span>*</span></label>
+                        <input type="text" id="sku" name="sku" maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product_name">Product Name <span>*</span></label>
+                        <input type="text" id="product_name" name="product_name" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category <span>*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Select category</option>
+                            <option>Laptop</option><option>Desktop</option><option>Monitor</option>
+                            <option>Peripheral</option><option>Printer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Supplier <span>*</span></label>
+                        <select id="supplier" name="supplier" required>
+                            <option value="">Select supplier</option>
+                            <option>Dell Technologies</option><option>HP Inc.</option>
+                            <option>Lenovo</option><option>Logitech</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="unit_price">Unit Price (RM) <span>*</span></label>
+                        <input type="number" id="unit_price" name="unit_price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock_quantity">Stock Quantity <span>*</span></label>
+                        <input type="number" id="stock_quantity" name="stock_quantity" min="0" step="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reorder_level">Reorder Level <span>*</span></label>
+                        <input type="number" id="reorder_level" name="reorder_level" min="0" step="1" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="button button-secondary">Clear</button>
+                    <button type="submit" class="button button-primary">Add Product</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="list-heading">
+                <div>
+                    <h2>Product Records</h2>
+                    <p class="section-description">Loaded from GET /api/products.</p>
+                </div>
+                <span id="recordCount" class="record-count">0 records</span>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>SKU</th><th>Product</th><th>Category</th>
+                            <th>Supplier</th><th>Unit Price</th><th>Stock</th>
+                            <th>Reorder</th><th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><p>IT Inventory Management System</p></footer>
+</body>
+</html>
